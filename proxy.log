@@ -1,0 +1,9 @@
+2020/03/24 23:47:40 g_listen_addr :10000
+2020/03/24 23:47:40 g_config_server_url http://127.0.0.1:8081/tools/api/pullServerList
+2020/03/24 23:47:40 g_update_server_list_delta 60
+2020/03/24 23:47:40 [UpdateServerList] begin pull ip 
+2020/03/24 23:47:40 [doPullIp] read body:  [{"id":1,"gateway":"gateway11","name":"测试"}]
+2020/03/24 23:47:40 1 -> gateway11
+2020/03/24 23:47:40 [UpdateServerList] end pull ip, result=true
+2020/03/24 23:47:40 [TransferTcpStart]tcp listening on :10000
+2020/03/24 23:48:10 Got signal: interrupt

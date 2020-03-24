@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d2bfc653-31d8-4faf-bab5-18e36d7493ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/micro_server/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro_server/routers/api/serverlist.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro_server/routers/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/amf/amf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/serverInfo.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy_server/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy_server/server/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy_server/server/logic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy_server/server/phttp.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code.agame.com/room/room.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/room/room.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="M:\golang\go1.13.4" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1Za29OQsldBNcoPLjwdzCBNi67h" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/proto" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto\amf" />
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\micro_server\routers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Build.go build code.game.com/proxy_server">
+    <configuration name="go build code.game.com/micro_server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="code.game.com" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/micro_server/main.go" />
+      <package value="code.game.com/micro_server" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build code.game.com/proxy_server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="code.game.com" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/proxy_server/main.go" />
+      <package value="code.game.com/proxy_server" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build code.game.com/proxy_server" />
+        <item itemvalue="Go Build.go build code.game.com/micro_server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>https://goproxy.cn</proxy>
+  </component>
+</project>
