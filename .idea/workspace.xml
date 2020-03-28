@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2bfc653-31d8-4faf-bab5-18e36d7493ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server_proto/greeter.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code.agame.com/room/room.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/room/room.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" afterDir="false" />
+    <list default="true" id="14b3bf07-5228-44b8-ad2c-360c9641df3d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hello/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intellij-protolint-0.1.2.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server_proto/build.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testClient/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/code.game.com.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.game.com.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_proto/greeter.proto" beforeDir="false" afterPath="$PROJECT_DIR$/server_proto/greeter.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session/tcp_session.go" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,8 +33,12 @@
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
-  <component name="ProjectId" id="1Za29OQsldBNcoPLjwdzCBNi67h" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1Zl6Co4D07lPnd6s2YNmv48mIIb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -38,8 +46,8 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/authServer" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,57 +57,39 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\authServer" />
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto\amf" />
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\micro_server\routers" />
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\server_proto" />
+      <recent name="M:\chenyu\gserver\go\src\code.game.com" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Go Build.go build code.game.com/proxy_server">
-    <configuration name="go build code.game.com/micro_server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build code.game.com/testClient">
+    <configuration name="go build code.game.com/hello" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="code.game.com" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/micro_server/main.go" />
-      <package value="code.game.com/micro_server" />
+      <filePath value="$PROJECT_DIR$/hello/main.go" />
+      <package value="code.game.com/hello" />
+      <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build code.game.com/proxy_server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build code.game.com/testClient" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="code.game.com" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/proxy_server/main.go" />
-      <package value="code.game.com/proxy_server" />
+      <filePath value="$PROJECT_DIR$/testClient/main.go" />
+      <package value="code.game.com/testClient" />
+      <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build code.game.com/proxy_server" />
-        <item itemvalue="Go Build.go build code.game.com/micro_server" />
+        <item itemvalue="Go Build.go build code.game.com/testClient" />
+        <item itemvalue="Go Build.go build code.game.com/hello" />
       </list>
     </recent_temporary>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -117,5 +107,27 @@
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://goproxy.cn</proxy>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1585409083594">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585409083594" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1585409083594">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585409083594" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1585409083594">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585409083594" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1585409083594">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585409083594" />
+    <state x="2383" y="165" key="SettingsEditor" timestamp="1585404073115">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2383" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585404073115" />
   </component>
 </project>

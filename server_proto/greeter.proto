@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service Greeter {
+    rpc Hello(HelloRequest) returns(HelloRespone) {}
+}
+
+
+message HelloRequest{
+    string name = 1;
+}
+
+message HelloRespone{
+    uint32 pid = 2;
+}
