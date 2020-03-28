@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2bfc653-31d8-4faf-bab5-18e36d7493ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/authServer/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authServer/routers/api/serverlist.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authServer/routers/router.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/micro_server/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/micro_server/routers/api/serverlist.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/micro_server/routers/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/ClientHeader.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/proto/amf/amf.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/proto/serverInfo.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/proxy_server/main.go" afterDir="false" />
@@ -12,9 +16,19 @@
       <change afterPath="$PROJECT_DIR$/proxy_server/server/logic.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/proxy_server/server/phttp.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/session/tcp_session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/dataPack.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilsModel/utilsModel.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/proxyserver/server/http.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code.agame.com/room/room.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/room/room.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../code.agame.com/tools/boss_client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro_server/routers/api/serverlist.go" beforeDir="false" afterPath="$PROJECT_DIR$/micro_server/routers/api/serverlist.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_server/server/transfer_tcp.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +45,7 @@
   </component>
   <component name="GOROOT" path="M:\golang\go1.13.4" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -46,7 +60,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/proto" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/authServer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,13 +70,14 @@
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\authServer" />
+      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
       <recent name="M:\chenyu\gserver\go\src\code.game.com\proto\amf" />
       <recent name="M:\chenyu\gserver\go\src\code.game.com\micro_server\routers" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="M:\chenyu\gserver\go\src\code.game.com\proto" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -112,7 +127,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

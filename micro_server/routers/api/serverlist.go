@@ -3,7 +3,6 @@ package api
 import (
 	"code.game.com/proto"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 var serverList []proto.ServerInfo = []proto.ServerInfo{
@@ -11,5 +10,5 @@ var serverList []proto.ServerInfo = []proto.ServerInfo{
 }
 
 func PullServerList(c *gin.Context) {
-	c.JSON(http.StatusOK, serverList)
+	//c.JSON(http.StatusOK, serverList)
 }

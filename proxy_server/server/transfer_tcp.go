@@ -2,21 +2,20 @@ package server
 
 import (
 	"bytes"
+	. "code.game.com/proto"
 	"code.game.com/proto/amf"
+	"code.game.com/session"
 	"encoding/binary"
 	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net"
+	"net/http"
 	"strconv"
+	"google.golang.org/grpc"
 )
 
-type Header struct {
-	Length uint32
-	Flag   uint32
-	Cmd    uint32
-}
 
 func getTargetIp(conn *net.TCPConn) (*net.TCPAddr, *Header, []byte, error) {
 	//read header
@@ -158,6 +157,57 @@ func handleRequest(conn *net.TCPConn) {
 	}()
 }
 
+func AuthToServer(conn *net.TCPConn) {
+	var header Header
+	err := binary.Read(conn, binary.BigEndian, &header)
+	if err != nil {
+		log.Printf("[getTargetIp] error, binary fail to read, %v\n", err)
+		sendLoginFailedToClient(conn);
+		return
+	}
+
+	//read body
+	bs := make([]byte, header.Length-12)
+	_, err = io.ReadFull(conn, bs)
+	if err != nil {
+		log.Printf("[getTargetIp] error, io fail to read body\n", err)
+		sendLoginFailedToClient(conn);
+		return
+	}
+
+	//encode amf message
+	cli_buf := bytes.NewBuffer(bs)
+	amf_buf, err := amf.Decode(cli_buf)
+	if err != nil {
+		log.Printf("[getTargetIp] fail to decode bs %v\n", err)
+		sendLoginFailedToClient(conn);
+		return
+	}
+
+	//get target srv_id
+	req := amf_buf.([]interface{})
+	client_host, _, err := net.SplitHostPort(conn.RemoteAddr().String())
+	if err == nil {
+		req[4] = "ip:" + client_host
+		log.Println(client_host, "login");
+		var buffer bytes.Buffer
+		_, err = amf.Encode(&buffer, req)
+		if err == nil {
+			bs = buffer.Bytes()
+			header.Length = 12 + uint32(len(bs))
+		}
+	}
+	resp, err :=  http.Get("http://127.0.0.1:9090/api/auth")
+	if err != nil {
+		sendLoginFailedToClient(conn)
+		log.Println(err)
+		return
+	}
+	log.Println("认证返回",resp)
+	session.CreateTCPSession(conn,1)
+
+}
+
 func StartTransfer() {
 	tcp_addr, err := net.ResolveTCPAddr("tcp", GetServeAddr())
 	if err != nil {
@@ -175,6 +225,8 @@ func StartTransfer() {
 			log.Printf("[TransferTcpStart] AcceptTCP error %v\n", err)
 			continue
 		}
-		go handleRequest(c)
+		AuthToServer(c)
+		//session.CreateTCPSession(c)
+		//go handleRequest(c)
 	}
 }

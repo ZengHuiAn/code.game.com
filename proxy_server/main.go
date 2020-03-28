@@ -10,8 +10,8 @@ import (
 func main() {
 	logfile, err := os.OpenFile("./proxy.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666);
 	if err == nil {
-		log.Println("write log to /opt/log/proxy.log");
-		log.SetOutput(logfile);
+		log.Println("write log to /opt/log/proxy.log",logfile);
+		//log.SetOutput(logfile);
 	} else {
 		log.Println(err);
 	}
