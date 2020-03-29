@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+
+service Auth{
+  rpc AuthClient(AuthRequest) returns(AuthRespone) {}
+}
+
+message AuthRequest{
+  bytes authToken = 1;
+}
+
+message AuthRespone{
+  uint32  errorCode = 1;
+  bytes authToken = 2;
+}

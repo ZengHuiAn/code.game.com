@@ -46,10 +46,6 @@ func (this *TCPSession) Init() {
 	//this.StartAuth()
 }
 
-func(this *TCPSession)StartAuth ()  {
-
-}
-
 func (t *TCPSession) StartReader() {
 	log.Println("[Reader Goroutine is running]")
 	defer log.Println(t.conn.RemoteAddr().String(), "[conn Reader exit!]")

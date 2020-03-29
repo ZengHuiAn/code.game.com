@@ -4,17 +4,17 @@ import (
 	"bytes"
 	. "code.game.com/proto"
 	"code.game.com/proto/amf"
+	"code.game.com/server_proto/proto"
 	"code.game.com/session"
+	"context"
 	"encoding/binary"
 	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net"
-	"net/http"
 	"strconv"
 )
-
 
 func getTargetIp(conn *net.TCPConn) (*net.TCPAddr, *Header, []byte, error) {
 	//read header
@@ -70,98 +70,110 @@ func getTargetIp(conn *net.TCPConn) (*net.TCPAddr, *Header, []byte, error) {
 		return nil, nil, nil, err
 	}
 
-
 	// rewrite server_id -> client_host
 	client_host, _, err := net.SplitHostPort(conn.RemoteAddr().String())
 	if err == nil {
 		req[4] = "ip:" + client_host
-		log.Println(client_host, "login");
+		log.Println(client_host, "login")
 		var buffer bytes.Buffer
 		_, err = amf.Encode(&buffer, req)
 		if err == nil {
 			bs = buffer.Bytes()
 			header.Length = 12 + uint32(len(bs))
 		} else {
-			log.Println("rewrite client ip failed", err);
+			log.Println("rewrite client ip failed", err)
 		}
 	} else {
-		log.Println("get client host failed", err);
+		log.Println("get client host failed", err)
 	}
 
 	return tcp_addr, &header, bs, nil
 }
 
-func sendLoginFailedToClient(conn net.Conn) {
+func sendLoginToClient(conn net.Conn, data interface{}) {
 	var header Header
-	header.Cmd = 2;
-	header.Flag = 1;
+	header.Cmd = 2
+	header.Flag = 1
 
-	var buffer bytes.Buffer;
+	var buffer bytes.Buffer
 
-	amf.Encode(&buffer, []int{0, 100});
+	amf.Encode(&buffer, data)
 
-	header.Length = uint32(buffer.Len()) + 12;
+	header.Length = uint32(buffer.Len()) + 12
 
-	binary.Write(conn, binary.BigEndian, &header);
-	conn.Write(buffer.Bytes());
+	binary.Write(conn, binary.BigEndian, &header)
+	conn.Write(buffer.Bytes())
 }
 
-// cli <-> gate <-> server
-func handleRequest(conn *net.TCPConn) {
-	target_addr, header, bs, err := getTargetIp(conn)
-	if err != nil {
-		log.Printf("[handleRequest] fail to get target ip, err = %v", err)
-		conn.Close()
-		return
-	}
-	log.Println("[handleRequest] cli prepare dial tcp ", target_addr)
-	target_conn, err := net.DialTCP("tcp", nil, target_addr)
-	if err != nil {
-		log.Println("[handleRequest] dial target addr error:", err, target_addr)
-		sendLoginFailedToClient(conn);
-		conn.Close()
-		return
-	}
-	log.Println("[handleRequest] cli dial tcp", target_addr)
+func sendLoginToSuccClient(conn net.Conn, buff []byte) {
+	var header Header
+	header.Cmd = 2
+	header.Flag = 1
 
-	if err := binary.Write(target_conn, binary.BigEndian, header); err != nil {
-		sendLoginFailedToClient(conn);
-		conn.Close()
-		target_conn.Close()
-		log.Println("[handleRequest] fail to write header")
-		return
-	}
+	header.Length = uint32(len(buff)) + 12
 
-	if _, err := target_conn.Write(bs); err != nil {
-		sendLoginFailedToClient(conn);
-		conn.Close()
-		target_conn.Close()
-		log.Println("[handleRequest] fail to write bs")
-		return
-	}
-
-	go func() {
-		_, err := target_conn.ReadFrom(conn)
-		log.Println("[handleRequest] proxy to server read over", err)
-		conn.Close()
-		target_conn.Close()
-		return
-	}()
-	go func() {
-		conn.ReadFrom(target_conn)
-		log.Println("[handleRequest] cli to proxy read over", err)
-		conn.Close()
-		target_conn.Close()
-		return
-	}()
+	binary.Write(conn, binary.BigEndian, &header)
+	conn.Write(buff)
 }
 
-func AuthToServer(conn *net.TCPConn) {
+//// cli <-> gate <-> server
+//func handleRequest(conn *net.TCPConn) {
+//	target_addr, header, bs, err := getTargetIp(conn)
+//	if err != nil {
+//		log.Printf("[handleRequest] fail to get target ip, err = %v", err)
+//		conn.Close()
+//		return
+//	}
+//	log.Println("[handleRequest] cli prepare dial tcp ", target_addr)
+//	target_conn, err := net.DialTCP("tcp", nil, target_addr)
+//	if err != nil {
+//		log.Println("[handleRequest] dial target addr error:", err, target_addr)
+//		sendLoginFailedToClient(conn)
+//		conn.Close()
+//		return
+//	}
+//	log.Println("[handleRequest] cli dial tcp", target_addr)
+//
+//	if err := binary.Write(target_conn, binary.BigEndian, header); err != nil {
+//		sendLoginFailedToClient(conn)
+//		conn.Close()
+//		target_conn.Close()
+//		log.Println("[handleRequest] fail to write header")
+//		return
+//	}
+//
+//	if _, err := target_conn.Write(bs); err != nil {
+//		sendLoginFailedToClient(conn)
+//		conn.Close()
+//		target_conn.Close()
+//		log.Println("[handleRequest] fail to write bs")
+//		return
+//	}
+//
+//	go func() {
+//		_, err := target_conn.ReadFrom(conn)
+//		log.Println("[handleRequest] proxy to server read over", err)
+//		conn.Close()
+//		target_conn.Close()
+//		return
+//	}()
+//	go func() {
+//		conn.ReadFrom(target_conn)
+//		log.Println("[handleRequest] cli to proxy read over", err)
+//		conn.Close()
+//		target_conn.Close()
+//		return
+//	}()
+//}
+
+var failed = []int{0, 100}
+
+func  AuthToServer(conn *net.TCPConn) {
 	var header Header
 	err := binary.Read(conn, binary.BigEndian, &header)
 	if err != nil {
 		log.Printf("[getTargetIp] error, binary fail to read, %v\n", err)
-		sendLoginFailedToClient(conn);
+		sendLoginToClient(conn, failed)
 		return
 	}
 
@@ -170,7 +182,7 @@ func AuthToServer(conn *net.TCPConn) {
 	_, err = io.ReadFull(conn, bs)
 	if err != nil {
 		log.Printf("[getTargetIp] error, io fail to read body\n", err)
-		sendLoginFailedToClient(conn);
+		sendLoginToClient(conn, failed)
 		return
 	}
 
@@ -179,16 +191,17 @@ func AuthToServer(conn *net.TCPConn) {
 	amf_buf, err := amf.Decode(cli_buf)
 	if err != nil {
 		log.Printf("[getTargetIp] fail to decode bs %v\n", err)
-		sendLoginFailedToClient(conn);
+		sendLoginToClient(conn, failed)
 		return
 	}
 
 	//get target srv_id
 	req := amf_buf.([]interface{})
-	client_host, _, err := net.SplitHostPort(conn.RemoteAddr().String())
+	client_host, client_port, err := net.SplitHostPort(conn.RemoteAddr().String())
 	if err == nil {
+		req[3] = client_port
 		req[4] = "ip:" + client_host
-		log.Println(client_host, "login");
+		log.Println(client_host, "login")
 		var buffer bytes.Buffer
 		_, err = amf.Encode(&buffer, req)
 		if err == nil {
@@ -196,15 +209,20 @@ func AuthToServer(conn *net.TCPConn) {
 			header.Length = 12 + uint32(len(bs))
 		}
 	}
-	resp, err :=  http.Get("http://127.0.0.1:9090/api/auth")
+	request := proto.AuthRequest{AuthToken: cli_buf.Bytes()}
+	auth_resp, err := GetAPIInstance().AuthService.AuthClient(context.TODO(), &request)
 	if err != nil {
-		sendLoginFailedToClient(conn)
-		log.Println(err)
+		log.Println("认证失败!",err)
+		sendLoginToClient(conn, failed)
 		return
 	}
-	log.Println("认证返回",resp)
-	session.CreateTCPSession(conn,1)
-
+	log.Println("认证返回", auth_resp.ErrorCode, auth_resp.AuthToken)
+	if auth_resp.ErrorCode == 200 {
+		sendLoginToSuccClient(conn, auth_resp.AuthToken)
+		session.CreateTCPSession(conn, 1)
+	} else {
+		sendLoginToClient(conn, failed)
+	}
 }
 
 func StartTransfer() {
@@ -212,6 +230,7 @@ func StartTransfer() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	l, err := net.ListenTCP("tcp", tcp_addr)
 	if err != nil {
 		log.Fatal(err)
@@ -219,12 +238,15 @@ func StartTransfer() {
 	defer l.Close()
 	log.Printf("[TransferTcpStart]tcp listening on %+v\n", tcp_addr)
 	for {
+		log.Println("开始等待连接")
 		c, err := l.AcceptTCP()
+		log.Println("客户端连接",c.RemoteAddr().String())
 		if err != nil {
 			log.Printf("[TransferTcpStart] AcceptTCP error %v\n", err)
 			continue
 		}
-		AuthToServer(c)
+
+		go AuthToServer(c)
 		//session.CreateTCPSession(c)
 		//go handleRequest(c)
 	}

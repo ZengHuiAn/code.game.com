@@ -7,7 +7,9 @@ import (
 	"os/signal"
 )
 
+
 func main() {
+	server.GetAPIInstance().Init()
 	logfile, err := os.OpenFile("./proxy.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666);
 	if err == nil {
 		log.Println("write log to /opt/log/proxy.log",logfile);
@@ -16,12 +18,12 @@ func main() {
 		log.Println(err);
 	}
 
-	if server.ParseConfig() != nil {
-		log.Println("fail to ParseConfig, exit")
-		return
-	}
+	//if server.ParseConfig() != nil {
+	//	log.Println("fail to ParseConfig, exit")
+	//	return
+	//}
 
-	go server.UpdateServerList()
+	//go server.UpdateServerList()
 	go server.StartTransfer();
 
 	s := wait(os.Interrupt, os.Kill)

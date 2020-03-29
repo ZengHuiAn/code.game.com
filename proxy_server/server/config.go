@@ -6,7 +6,7 @@ import (
 	"net"
 )
 
-var g_listen_addr = ":10000"
+var g_listen_addr = ":8091"
 var g_config_server_url = "http://127.0.0.1:10001/tools/api/pullServerList"
 var g_update_server_list_delta = int64(60);
 
