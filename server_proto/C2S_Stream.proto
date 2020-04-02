@@ -1,0 +1,15 @@
+syntax = "proto3";
+package proto;
+
+service C2S_Router{
+  rpc AuthClient (stream C2S_RouterRequest) returns(stream S2C_RouterRespone) {}
+}
+
+message C2S_RouterRequest{
+  bytes bodyMsg = 1;
+}
+
+message S2C_RouterRespone{
+  repeated uint32 pids  = 1;
+  bytes bodyMsg = 2;
+}
